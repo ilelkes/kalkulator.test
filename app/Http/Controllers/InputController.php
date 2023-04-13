@@ -12,10 +12,10 @@ class InputController extends Controller
     protected function getInputs()
     {
         return [
-            '1' => ['id' => 1, 'success' => true, 'title' => 'adat 1', 'description' => 'adat 1 leírás...'],
-            '2' => ['id' => 2, 'success' => true, 'title' => 'adat 2', 'description' => 'adat 2 leírás...'],
-            '3' => ['id' => 3, 'success' => false, 'title' => 'adat 3', 'description' => 'adat 3 leírás...'],
-            '4' => ['id' => 4, 'success' => false, 'title' => 'adat 4', 'description' => 'adat 4 leírás...']
+            '1' => ['id' => 1, 'success' => true, 'title' => 'exampleData', 'description' => 'Pl.: output: 470 (370 alappont + 100 többletpont)'],
+            '2' => ['id' => 2, 'success' => true, 'title' => 'exampleData1', 'description' => 'Pl.: output: 476 (376 alappont + 100 többletpont)'],
+            '3' => ['id' => 3, 'success' => false, 'title' => 'exampleData2', 'description' => 'Pl.: output: hiba, nem lehetséges a pontszámítás a kötelező érettségi tárgyak hiánya miatt'],
+            '4' => ['id' => 4, 'success' => false, 'title' => 'exampleData3', 'description' => 'Pl.: output: hiba, nem lehetséges a pontszámítás a magyar nyelv és irodalom tárgyból elért 20% alatti eredmény miatt']
         ];
     }
 

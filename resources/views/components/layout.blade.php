@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="author" content="Lelkes István">
+    <base href="{{env('APP_URL')}}">
     <link rel="shortcut icon" href="{{ asset('images/favicon.ico') }}" type="image/x-icon" />
     <link rel="icon" href="{{ asset('images/favicon.ico') }}" type="image/x-icon" />
     <title>Oktatási Hivatal | Egyszerűsített pontszámító kalkulátor</title>
@@ -16,7 +17,7 @@
 
 <body>
     <div class="container px-4 py-5">
-        <h2 class="pb-3 border-bottom"><img src="{{ asset('images/logo.png') }}" alt="logo" /></h2>
+        <h2 class="pb-3 border-bottom"><a href=""><img src="{{ asset('images/logo.png') }}" alt="logo" /></a></h2>
         {{ $slot }}
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"

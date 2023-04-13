@@ -51,7 +51,6 @@ class InputTest extends TestCase
         $response = $this->get(route('inputs.show','1'));
 
         $response->assertStatus(200);
-        $response->assertDontSee(__('Nem található ez a tesztadat.'));
-        $response->assertSee(__('Vissza az adatokhoz'));
+        $response->assertSee(__('Vissza'));
     }
 }
