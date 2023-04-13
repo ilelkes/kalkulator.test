@@ -1,0 +1,87 @@
+body {
+    color: #333333;
+}
+
+.feature-icon {
+    width: 4rem;
+    height: 4rem;
+    border-radius: 0.75rem;
+}
+
+.icon-square {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 0.75rem;
+}
+
+.text-shadow-1 {
+    text-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.25);
+}
+.text-shadow-2 {
+    text-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.25);
+}
+.text-shadow-3 {
+    text-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.25);
+}
+
+.card-cover {
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+}
+
+.feature-icon-small {
+    width: 3rem;
+    height: 3rem;
+}
+
+.text-bg-primary {
+    background-color: #ee274c !important;
+}
+
+.text-bg-success {
+    background-color: #00a664 !important;
+}
+
+a.data-list {
+    text-decoration: none;
+    color: #333333;
+    padding: 10px 20px 0px 20px;
+}
+
+a.data-list .data-items {
+    padding: 20px 20px 20px 20px;
+    background-color: rgba(0, 0, 0, 0.04);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 0.5rem;
+}
+
+a.data-list:hover .data-items {
+    padding: 20px 20px 20px 20px;
+    background-color: rgba(0, 0, 0, 0);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 0.5rem;
+}
+
+.data-items h4,
+.data-item h4 {
+    text-transform: uppercase;
+    margin-top: 12px;
+    font-size: 17px;
+}
+
+.data-items .text-body-secondary {
+    height: 80px;
+    line-height: 20px;
+    overflow-y: hidden;
+}
+
+.data-item {
+    margin: 0px 0.75rem 0px 0.75rem;
+    padding: 10px 20px 10px 20px;
+    background-color: rgba(0, 0, 0, 0.04);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 0.5rem;
+    min-height: 50vh;
+    height: auto;
+}
