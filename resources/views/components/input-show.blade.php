@@ -12,8 +12,9 @@
     @endphp
 
     @if (isset($actArray))
-        <x-input-show-min :inputArray="$$actArray['erettsegi-eredmenyek']" />
-        <x-input-show-req :inputArray="$$actArray['erettsegi-eredmenyek']" />
+        <x-input-show-min :erettsegiEredmenyek="$$actArray['erettsegi-eredmenyek']" />
+        <x-input-show-req :erettsegiEredmenyek="$$actArray['erettsegi-eredmenyek']" />
+        <x-input-show-typesreq :valasztottSzak="$$actArray['valasztott-szak']" :erettsegiEredmenyek="$$actArray['erettsegi-eredmenyek']" :tobbletpontok="$$actArray['tobbletpontok']" />
     @endif
 
 </div>

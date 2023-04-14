@@ -81,7 +81,6 @@ class InputTest extends TestCase
     }
 
     //Az érettségi tantárgynak létezik típusa, amely vagy közép, vagy emelt szintű lehet. Minden szaknak megvan a maga tárgyi követelményrendszere, amely meghatározza, hogy mely tárgyakat kell figyelembe venni az alappontok kiszámításához.
-
     /*
     A könnyebbség kedvéért a feladathoz csak az itt megadott két szak érettségi követelményrendszerét kell figyelembe venni.
     
@@ -93,6 +92,16 @@ class InputTest extends TestCase
     - Kötelező: angol (emelt szinten)
     - Kötelezően választható: francia vagy német vagy olasz vagy orosz vagy spanyol vagy történelem
     */
+
+    public function test_inputs_show_id2_route_exist_and_there_are_faculty_requirements(): void
+    {
+        $response = $this->get(route('inputs.show', '2'));
+
+        $response->assertStatus(200);
+        $response->assertSee(__('Vissza az adatokhoz'));
+        $response->assertDontSee(__('hiba, nem elérhetőek a választott szak pontszámításához a követelmények'));
+        $response->assertDontSee(__('Nem található ez a tesztadat.'));
+    }
 
     /* Alappontok számítása */
 

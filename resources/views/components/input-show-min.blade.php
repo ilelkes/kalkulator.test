@@ -1,10 +1,10 @@
-@props(['inputArray'])
+@props(['erettsegiEredmenyek'])
 @php
     $message_start = 'hiba, nem lehetséges a pontszámítás a(z)';
     $message_end = 'tárgyból elért 20% alatti eredmény miatt';
 @endphp
 
-@foreach ($inputArray as $index => $erettsegi)
+@foreach ($erettsegiEredmenyek as $index => $erettsegi)
     @php
         $message = '';
     @endphp
