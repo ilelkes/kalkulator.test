@@ -46,17 +46,29 @@ class InputTest extends TestCase
         $response->assertSee(__('Nem található ez a tesztadat.'));
     }
 
-    public function test_inputs_show_id1_route_exist_and_there_are_some_data(): void
+    public function test_inputs_show_id_from_1_to_4_route_exist_and_there_are_some_data(): void
     {
-        $response = $this->get(route('inputs.show', '1'));
+        for($id=1; $id<=4; $id++)
+        {
+            $response = $this->get(route('inputs.show', $id));
 
-        $response->assertStatus(200);
-        $response->assertSee(__('Vissza az adatokhoz'));
-        $response->assertDontSee(__('Nem található ez a tesztadat.'));
+            $response->assertStatus(200);
+            $response->assertSee(__('Vissza az adatokhoz'));
+            $response->assertDontSee(__('Nem található ez a tesztadat.'));
+        }
     }
 
     /* Alap információk */
     //Amennyiben valamely tárgyból 20% alatt teljesített a felvételiző, úgy sikertelen az érettségi eredménye és a pontszámítás nem lehetséges.
+    public function test_inputs_show_id4_route_exist_and_there_are_some_min_20_percent_failed_data(): void
+    {
+        $response = $this->get(route('inputs.show', '4'));
+
+        $response->assertStatus(200);
+        $response->assertSee(__('Vissza az adatokhoz'));
+        $response->assertSee(__('tárgyból elért 20% alatti eredmény miatt'));
+        $response->assertDontSee(__('Nem található ez a tesztadat.'));
+    }
 
     //A jelentkezőknek a következő tárgyakból kötelező érettségi vizsgát tennie: magyar nyelv és irodalom, történelem és matematika egyéb esetben a pontszámítás nem lehetséges.
 
@@ -85,5 +97,5 @@ class InputTest extends TestCase
     //A többletpontok összege 0 és legfeljebb 100 pont között lehetséges abban az esetben is, ha a jelentkező különböző jogcímek alapján elért többletpontjainak az összege ezt meghaladná.
 
     //Az összpontszámot az alappontok és többletpontok összege adja meg.
-    
+
 }
