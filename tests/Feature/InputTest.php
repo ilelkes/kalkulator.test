@@ -48,8 +48,7 @@ class InputTest extends TestCase
 
     public function test_inputs_show_id_from_1_to_4_route_exist_and_there_are_some_data(): void
     {
-        for($id=1; $id<=4; $id++)
-        {
+        for ($id = 1; $id <= 4; $id++) {
             $response = $this->get(route('inputs.show', $id));
 
             $response->assertStatus(200);
@@ -81,9 +80,19 @@ class InputTest extends TestCase
         $response->assertDontSee(__('Nem található ez a tesztadat.'));
     }
 
-    //Az érettségi tantárgynak létezik típusa, amely vagy közép, vagy emelt szintű lehet.
+    //Az érettségi tantárgynak létezik típusa, amely vagy közép, vagy emelt szintű lehet. Minden szaknak megvan a maga tárgyi követelményrendszere, amely meghatározza, hogy mely tárgyakat kell figyelembe venni az alappontok kiszámításához.
 
-    //Minden szaknak megvan a maga tárgyi követelményrendszere, amely meghatározza, hogy mely tárgyakat kell figyelembe venni az alappontok kiszámításához.
+    /*
+    A könnyebbség kedvéért a feladathoz csak az itt megadott két szak érettségi követelményrendszerét kell figyelembe venni.
+    
+    Az ELTE IK - Programtervező informatikus:
+    - Kötelező: matematika
+    - Kötelezően választható: biológia vagy fizika vagy informatika vagy kémia
+    
+    A PPKE BTK – Anglisztika:
+    - Kötelező: angol (emelt szinten)
+    - Kötelezően választható: francia vagy német vagy olasz vagy orosz vagy spanyol vagy történelem
+    */
 
     /* Alappontok számítása */
 
