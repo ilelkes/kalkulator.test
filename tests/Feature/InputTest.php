@@ -107,6 +107,18 @@ class InputTest extends TestCase
 
     //Kötelező tárgy: amelyből mindenképpen érettségit kell tennie a jelentkezőnek
 
+    public function test_inputs_show_id2_route_exist_and_there_are_faculty_requirements_and_is_grade(): void
+    {
+        $response = $this->get(route('inputs.show', '2'));
+
+        $response->assertStatus(200);
+        $response->assertSee(__('Vissza az adatokhoz'));
+        $response->assertDontSee(__('hiba, nem teljesített kötelező tárgyat a szakhoz'));
+        $response->assertDontSee(__('hiba, nem teljesített megfelelő érettségi szintet a szakhoz'));
+        $response->assertDontSee(__('hiba, nem teljesített kötelezően választható tárgyat a szakhoz'));
+        $response->assertDontSee(__('Nem található ez a tesztadat.'));
+    }
+
     //Kötelezően választható tárgyak: olyan tárgyak összesége, amelyből a jelentkező döntheti el, hogy mely tárgyból vagy tárgyakból szeretne érettségi vizsgát tenni. Egy tárgyat mindenképpen választani kell.
 
     //Amennyiben a kötelező tárgyból, vagy egyetlen kötelezően választható tárgyból sem tett érettségit a hallgató, úgy a pontszámítás nem lehetséges

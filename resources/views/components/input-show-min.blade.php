@@ -16,6 +16,7 @@
         @endif
         @if ($elnevezes == 'eredmeny' and intval($vizsgaltadat) < 20)
             <x-alert :message="$message" class="danger" />
+            {{ session(['error' => true]) }}
         @endif
     @endforeach
 @endforeach

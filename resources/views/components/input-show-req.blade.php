@@ -17,4 +17,5 @@
 
 @if ($kotelezo_darab < 3)
     <x-alert :message="$message" class="danger" />
+    {{ session(['error' => true]) }}
 @endif
