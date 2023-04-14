@@ -49,8 +49,9 @@ class InputTest extends TestCase
     public function test_inputs_show_id1_route_exist_and_there_are_some_data(): void
     {
         $response = $this->get(route('inputs.show','1'));
-
+        
         $response->assertStatus(200);
-        $response->assertSee(__('Vissza'));
+        $response->assertSee(__('Vissza az adatokhoz'));
+        $response->assertDontSee(__('Nem található ez a tesztadat.'));
     }
 }

@@ -4,12 +4,19 @@
     <h4 class="fw-semibold mb-0">{{ $input['title'] }}</h4>
     <p class="text-body-secondary">{{ $input['description'] }}</p>
 
+    {{-- A feladathoz kapott php --}}
     @php
+        //A kapott php adatokkal, tömbökkel - A második $exampleData tömböt átneveztem $exampleData1-re, más módosítás nem történt
         require public_path('homework_input.php');
-        print_r($exampleData["valasztott-szak"]);
+
+        //Az adott tömbben lévő értékek megjelenítése - Ellenőrzés céljából
+        $actArray = $input['title'];
+        print_r($$actArray["valasztott-szak"]);
         print('<hr>');
-        print_r($exampleData["erettsegi-eredmenyek"]);
+        print_r($$actArray["erettsegi-eredmenyek"]);
         print('<hr>');
-        print_r($exampleData["tobbletpontok"]);
+        print_r($$actArray["tobbletpontok"]);
     @endphp
+    {{-- A feladathoz kapott php --}}
+
 </div>
