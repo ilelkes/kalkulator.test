@@ -71,6 +71,15 @@ class InputTest extends TestCase
     }
 
     //A jelentkezőknek a következő tárgyakból kötelező érettségi vizsgát tennie: magyar nyelv és irodalom, történelem és matematika egyéb esetben a pontszámítás nem lehetséges.
+    public function test_inputs_show_id3_route_exist_and_there_are_some_min_20_percent_failed_data(): void
+    {
+        $response = $this->get(route('inputs.show', '3'));
+
+        $response->assertStatus(200);
+        $response->assertSee(__('Vissza az adatokhoz'));
+        $response->assertSee(__('hiba, nem lehetséges a pontszámítás a kötelező érettségi tárgyak hiánya miatt'));
+        $response->assertDontSee(__('Nem található ez a tesztadat.'));
+    }
 
     //Az érettségi tantárgynak létezik típusa, amely vagy közép, vagy emelt szintű lehet.
 
