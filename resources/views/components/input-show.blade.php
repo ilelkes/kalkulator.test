@@ -13,6 +13,7 @@
 
     @if (isset($actArray))
         <x-input-show-min :inputArray="$$actArray['erettsegi-eredmenyek']" />
+        <x-input-show-req :inputArray="$$actArray['erettsegi-eredmenyek']" />
     @endif
 
 </div>
