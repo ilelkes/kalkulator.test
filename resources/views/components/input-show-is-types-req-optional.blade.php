@@ -18,6 +18,13 @@
                     $db_kotelezoen_valaszthato++;
                 }
             }
+            if ($elnevezes == 'tipus') {
+                if ($aktnev == $kotelezoen_valaszthato_targy) {
+                    if ($vizsgaltadat == 'emelt') {
+                        $_SESSION['emelt_szintu_erettsegi_pontszam'] += 50;
+                    }
+                }
+            }
             if ($elnevezes == 'eredmeny') {
                 if ($aktnev == $kotelezoen_valaszthato_targy) {
                     $_SESSION['kotelezoen_valaszthato_eredmenyek'][$index_kotelezoen_valaszthato++] = intval($vizsgaltadat);
@@ -30,13 +37,6 @@
 @php
     if (isset($_SESSION['kotelezoen_valaszthato_eredmenyek'])) {
         $_SESSION['kotelezoen_valaszthato_eredmeny'] = max($_SESSION['kotelezoen_valaszthato_eredmenyek']);
-    
-        if ($_SESSION['kotelezoen_valaszthato_eredmeny'] < 0) {
-            $_SESSION['kotelezoen_valaszthato_eredmeny'] = 0;
-        }
-        if ($_SESSION['kotelezoen_valaszthato_eredmeny'] > 100) {
-            $_SESSION['kotelezoen_valaszthato_eredmeny'] = 100;
-        }
     }
 @endphp
 

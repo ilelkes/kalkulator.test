@@ -20,11 +20,12 @@
             if ($elnevezes == 'eredmeny') {
                 if ($aktnev == $kotelezo_targy) {
                     $_SESSION['kotelezo_eredmeny'] = intval($vizsgaltadat);
-                    if ($_SESSION['kotelezo_eredmeny'] < 0) {
-                        $_SESSION['kotelezo_eredmeny'] = 0;
-                    }
-                    if ($_SESSION['kotelezo_eredmeny'] > 100) {
-                        $_SESSION['kotelezo_eredmeny'] = 100;
+                }
+            }
+            if ($elnevezes == 'tipus') {
+                if ($aktnev == $kotelezo_targy) {
+                    if ($vizsgaltadat == 'emelt') {
+                        $_SESSION['emelt_szintu_erettsegi_pontszam'] += 50;
                     }
                 }
             }

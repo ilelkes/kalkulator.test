@@ -116,7 +116,7 @@ class InputTest extends TestCase
         $response->assertDontSee(__('hiba, nem teljesített megfelelő érettségi szintet a szakhoz'));
         $response->assertDontSee(__('Nem található ez a tesztadat.'));
     }
-    
+
     //Kötelezően választható tárgyak: olyan tárgyak összesége, amelyből a jelentkező döntheti el, hogy mely tárgyból vagy tárgyakból szeretne érettségi vizsgát tenni. Egy tárgyat mindenképpen választani kell.
     public function test_inputs_show_id1_route_exist_and_there_are_faculty_optional_requirements_and_is_grade(): void
     {
@@ -154,10 +154,10 @@ class InputTest extends TestCase
     }
 
     /* Többletpontok számítása */
-    
+
     //Van-e többletpontja a jelentkezőnek
 
-    public function test_inputs_show_id1_route_exist_and_there_are_no_extra_point(): void
+    public function test_inputs_show_id1_route_exist_and_there_are_extra_point(): void
     {
         $response = $this->get(route('inputs.show', '1'));
 
@@ -168,11 +168,32 @@ class InputTest extends TestCase
         $response->assertDontSee(__('Nem található ez a tesztadat.'));
     }
 
+    //Emelt szintű érettségi
+    public function test_inputs_show_id1_route_exist_and_there_are_advanced_point(): void
+    {
+        $response = $this->get(route('inputs.show', '1'));
+
+        $response->assertStatus(200);
+        $response->assertSee(__('Vissza az adatokhoz'));
+        $response->assertSee(__('Emelt szintű érettségi pontszám:'));
+        $response->assertDontSee(__('hiba, nem érhetőek el az érettségi eredmények'));
+        $response->assertDontSee(__('Nem található ez a tesztadat.'));
+    }
+
     //Nyelvtudás
+    public function test_inputs_show_id1_route_exist_and_there_are_language_point(): void
+    {
+        $response = $this->get(route('inputs.show', '1'));
+
+        $response->assertStatus(200);
+        $response->assertSee(__('Vissza az adatokhoz'));
+        $response->assertSee(__('Nyelvtudás pontszám:'));
+        $response->assertDontSee(__('hiba, nem érhetőek el az érettségi eredmények'));
+        $response->assertDontSee(__('Nem található ez a tesztadat.'));
+    }
 
     //Nyelv kivétel - Amennyiben a jelentkező egyazon nyelvből tett le több sikeres nyelvvizsgát, úgy a többletpontszámítás során egyszer kerülnek kiértékelésre a nagyobb pontszám függvényében (pl.: angol B2 és angol C1 összértéke 40 pont lesz). 
 
-    //Emelt szintű érettségi
 
     //A többletpontok összege 0 és legfeljebb 100 pont között lehetséges abban az esetben is, ha a jelentkező különböző jogcímek alapján elért többletpontjainak az összege ezt meghaladná.
 

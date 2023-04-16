@@ -6,6 +6,7 @@
 
     @php
         $_SESSION = [];
+        $_SESSION['emelt_szintu_erettsegi_pontszam'] = 0;
         //A kapott php adatokkal, tömbökkel - A második $exampleData tömböt átneveztem $exampleData1-re, más módosítás nem történt
         require public_path('homework_input.php');
         
@@ -33,6 +34,9 @@
         @endif
         @if (session('error') === false)
             <x-input-show-basic-score />
+        @endif
+        @if (session('error') === false)
+            <x-input-show-extra-points />
         @endif
     @endif
 
