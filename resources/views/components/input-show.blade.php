@@ -21,10 +21,19 @@
             <x-input-show-req :erettsegiEredmenyek="$$actArray['erettsegi-eredmenyek']" />
         @endif
         @if (session('error') === false)
-            <x-input-show-typesreq :valasztottSzak="$$actArray['valasztott-szak']" />
+            <x-input-show-types-req :valasztottSzak="$$actArray['valasztott-szak']" />
         @endif
         @if (session('error') === false)
-            <x-input-show-istypesreq :erettsegiEredmenyek="$$actArray['erettsegi-eredmenyek']" />
+            <x-input-show-is-types-req :erettsegiEredmenyek="$$actArray['erettsegi-eredmenyek']" />
+        @endif
+        @if (session('error') === false)
+            <x-input-show-is-types-req-level :erettsegiEredmenyek="$$actArray['erettsegi-eredmenyek']" />
+        @endif
+        @if (session('error') === false)
+            <x-input-show-is-types-req-optional :erettsegiEredmenyek="$$actArray['erettsegi-eredmenyek']" />
+        @endif
+        @if (session('error') === false)
+            {{--Megállapított alappontszám:--}}
         @endif
         @php
             if (isset($_SESSION) and count($_SESSION) > 0) {

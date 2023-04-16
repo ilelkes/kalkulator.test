@@ -106,10 +106,32 @@ class InputTest extends TestCase
     /* Alappontok számítása */
 
     //Kötelező tárgy: amelyből mindenképpen érettségit kell tennie a jelentkezőnek
-
-    public function test_inputs_show_id2_route_exist_and_there_are_faculty_requirements_and_is_grade(): void
+    public function test_inputs_show_id1_route_exist_and_there_are_faculty_requirements_and_is_grade(): void
     {
-        $response = $this->get(route('inputs.show', '2'));
+        $response = $this->get(route('inputs.show', '1'));
+
+        $response->assertStatus(200);
+        $response->assertSee(__('Vissza az adatokhoz'));
+        $response->assertDontSee(__('hiba, nem teljesített kötelező tárgyat a szakhoz'));
+        $response->assertDontSee(__('hiba, nem teljesített megfelelő érettségi szintet a szakhoz'));
+        $response->assertDontSee(__('Nem található ez a tesztadat.'));
+    }
+    
+    //Kötelezően választható tárgyak: olyan tárgyak összesége, amelyből a jelentkező döntheti el, hogy mely tárgyból vagy tárgyakból szeretne érettségi vizsgát tenni. Egy tárgyat mindenképpen választani kell.
+    public function test_inputs_show_id1_route_exist_and_there_are_faculty_optional_requirements_and_is_grade(): void
+    {
+        $response = $this->get(route('inputs.show', '1'));
+
+        $response->assertStatus(200);
+        $response->assertSee(__('Vissza az adatokhoz'));
+        $response->assertDontSee(__('hiba, nem teljesített kötelezően választható tárgyat a szakhoz'));
+        $response->assertDontSee(__('Nem található ez a tesztadat.'));
+    }
+
+    //Amennyiben a kötelező tárgyból, vagy egyetlen kötelezően választható tárgyból sem tett érettségit a hallgató, úgy a pontszámítás nem lehetséges
+    public function test_inputs_show_id1_route_exist_and_there_are_faculty_full_requirements_and_is_grade(): void
+    {
+        $response = $this->get(route('inputs.show', '1'));
 
         $response->assertStatus(200);
         $response->assertSee(__('Vissza az adatokhoz'));
@@ -119,11 +141,16 @@ class InputTest extends TestCase
         $response->assertDontSee(__('Nem található ez a tesztadat.'));
     }
 
-    //Kötelezően választható tárgyak: olyan tárgyak összesége, amelyből a jelentkező döntheti el, hogy mely tárgyból vagy tárgyakból szeretne érettségi vizsgát tenni. Egy tárgyat mindenképpen választani kell.
-
-    //Amennyiben a kötelező tárgyból, vagy egyetlen kötelezően választható tárgyból sem tett érettségit a hallgató, úgy a pontszámítás nem lehetséges
-
     //Az alappontszám megállapításához csak a kötelező tárgy pontértékét és a legjobban sikerült kötelezően választható tárgy pontértékét kell összeadni és az így kapott összeget megduplázni.
+    public function test_inputs_show_id1_route_exist_and_there_are_basic_score(): void
+    {
+        $response = $this->get(route('inputs.show', '1'));
+
+        $response->assertStatus(200);
+        $response->assertSee(__('Vissza az adatokhoz'));
+        $response->assertSee(__('Megállapított alappontszám:'));
+        $response->assertDontSee(__('Nem található ez a tesztadat.'));
+    }
 
     /* Többletpontok számítása */
 
