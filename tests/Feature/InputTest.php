@@ -181,6 +181,9 @@ class InputTest extends TestCase
     }
 
     //Nyelvtudás
+    
+    //Nyelv kivétel - Amennyiben a jelentkező egyazon nyelvből tett le több sikeres nyelvvizsgát, úgy a többletpontszámítás során egyszer kerülnek kiértékelésre a nagyobb pontszám függvényében (pl.: angol B2 és angol C1 összértéke 40 pont lesz).
+    
     public function test_inputs_show_id1_route_exist_and_there_are_language_point(): void
     {
         $response = $this->get(route('inputs.show', '1'));
@@ -192,11 +195,18 @@ class InputTest extends TestCase
         $response->assertDontSee(__('Nem található ez a tesztadat.'));
     }
 
-    //Nyelv kivétel - Amennyiben a jelentkező egyazon nyelvből tett le több sikeres nyelvvizsgát, úgy a többletpontszámítás során egyszer kerülnek kiértékelésre a nagyobb pontszám függvényében (pl.: angol B2 és angol C1 összértéke 40 pont lesz). 
-
-
     //A többletpontok összege 0 és legfeljebb 100 pont között lehetséges abban az esetben is, ha a jelentkező különböző jogcímek alapján elért többletpontjainak az összege ezt meghaladná.
 
     //Az összpontszámot az alappontok és többletpontok összege adja meg.
 
+    public function test_inputs_show_id1_route_exist_and_there_are_total_score(): void
+    {
+        $response = $this->get(route('inputs.show', '1'));
+
+        $response->assertStatus(200);
+        $response->assertSee(__('Vissza az adatokhoz'));
+        $response->assertSee(__('Összpontszám:'));
+        $response->assertDontSee(__('hiba, nem érhetőek el az érettségi eredmények'));
+        $response->assertDontSee(__('Nem található ez a tesztadat.'));
+    }
 }

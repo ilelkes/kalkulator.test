@@ -1,10 +1,6 @@
 @php
     $message = 'hiba, nem érhetőek el az érettségi eredmények';
     
-    if (!isset($_SESSION['nyelvtudas_pontszam'])) {
-        $_SESSION['nyelvtudas_pontszam'] = 0;
-    }
-    
     if (isset($_SESSION['nyelvtudas_pontszam']) and isset($_SESSION['emelt_szintu_erettsegi_pontszam'])) {
         $_SESSION['tobbletpontszam'] = $_SESSION['nyelvtudas_pontszam'] + $_SESSION['emelt_szintu_erettsegi_pontszam'];
     
