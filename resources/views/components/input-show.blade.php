@@ -3,7 +3,6 @@
 
 <div class="col d-flex flex-column gap-2 data-item">
     <h4 class="fw-semibold mb-0">{{ $input['title'] }}</h4>
-    <p class="text-body-secondary">{{-- $input['description'] --}}</p>
 
     @php
         $_SESSION = [];
@@ -33,19 +32,8 @@
             <x-input-show-is-types-req-optional :erettsegiEredmenyek="$$actArray['erettsegi-eredmenyek']" />
         @endif
         @if (session('error') === false)
-            {{--Megállapított alappontszám:--}}
+            {{ 'Megállapított alappontszám: (' . $_SESSION['kotelezo_eredmeny'] . '+' . $_SESSION['kotelezoen_valaszthato_eredmeny'] . ')*2' }}
         @endif
-        @php
-            if (isset($_SESSION) and count($_SESSION) > 0) {
-                print '<strong>Segédadatok</strong>';
-                print '<hr>';
-                print_r($_SESSION['kotelezo_szaktargyak']);
-                print '<hr>';
-                print_r($_SESSION['kotelezo_szaktargyak_szint']);
-                print '<hr>';
-                print_r($_SESSION['kotelezoen_valaszthato_szaktargyak']);
-            }
-        @endphp
     @endif
 
 </div>

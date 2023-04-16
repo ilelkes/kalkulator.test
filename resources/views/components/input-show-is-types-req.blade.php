@@ -17,6 +17,17 @@
                     $db_kotelezo++;
                 }
             }
+            if ($elnevezes == 'eredmeny') {
+                if ($aktnev == $kotelezo_targy) {
+                    $_SESSION['kotelezo_eredmeny'] = intval($vizsgaltadat);
+                    if ($_SESSION['kotelezo_eredmeny'] < 0) {
+                        $_SESSION['kotelezo_eredmeny'] = 0;
+                    }
+                    if ($_SESSION['kotelezo_eredmeny'] > 100) {
+                        $_SESSION['kotelezo_eredmeny'] = 100;
+                    }
+                }
+            }
         @endphp
     @endforeach
 @endforeach
