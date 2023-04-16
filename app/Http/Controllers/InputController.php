@@ -25,6 +25,16 @@ class InputController extends Controller
         return view('inputs.index', compact('inputs'));
     }
 
+    public function main()
+    {
+        return view('inputs.main');
+    }
+
+    public function testarray()
+    {
+        return view('inputs.testarray');
+    }
+
     public function nodata()
     {
         $inputs = [];
@@ -54,6 +64,11 @@ class InputController extends Controller
             $inputs[$id] = null;
         }
         return view('inputs.show', ['input' => $inputs[$id]]);
+    }
+
+    public function testshow(string $id)
+    {
+        return view('inputs.testshow', ['id' => $id]);
     }
 
     /**

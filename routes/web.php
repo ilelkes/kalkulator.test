@@ -14,7 +14,11 @@ use App\Http\Controllers\InputController;
 |
 */
 
-Route::get('/', [InputController::class, 'index']);
+Route::get('/', [InputController::class, 'main'])->name('inputs.main');
 Route::get('/inputs', [InputController::class, 'index'])->name('inputs.index');
 Route::get('/inputs/nodata', [InputController::class, 'nodata'])->name('inputs.nodata');
+
+Route::get('/inputs/testarray', [InputController::class, 'testarray'])->name('inputs.testarray');
+Route::get('/inputs/testshow/{id}', [InputController::class, 'testshow'])->name('inputs.testshow');
+
 Route::get('/inputs/{input}', [InputController::class, 'show'])->name('inputs.show');

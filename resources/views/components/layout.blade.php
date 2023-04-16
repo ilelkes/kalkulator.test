@@ -17,7 +17,8 @@
 
 <body>
     <div class="container px-4 py-5">
-        <h2 class="pb-3 border-bottom"><a href=""><img src="{{ asset('images/logo.png') }}" alt="logo" /></a>
+        <h2 class="pb-3 border-bottom"><a href="{{ route('inputs.main') }}"><img src="{{ asset('images/logo.png') }}"
+                    alt="logo" /></a>
         </h2>
         {{ $slot }}
     </div>

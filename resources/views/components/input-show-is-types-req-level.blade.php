@@ -1,7 +1,7 @@
 @props(['erettsegiEredmenyek'])
 @php
     $message = 'hiba, nem teljesített megfelelő érettségi szintet a szakhoz';
-
+    
     $kotelezo_targy = '';
     $aktnev = '';
     $db_kotelezo = 0;
