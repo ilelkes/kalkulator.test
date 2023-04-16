@@ -149,10 +149,24 @@ class InputTest extends TestCase
         $response->assertStatus(200);
         $response->assertSee(__('Vissza az adatokhoz'));
         $response->assertSee(__('Megállapított alappontszám:'));
+        $response->assertDontSee(__('hiba, nem érhetőek el az érettségi eredmények'));
         $response->assertDontSee(__('Nem található ez a tesztadat.'));
     }
 
     /* Többletpontok számítása */
+    
+    //Van-e többletpontja a jelentkezőnek
+
+    public function test_inputs_show_id1_route_exist_and_there_are_no_extra_point(): void
+    {
+        $response = $this->get(route('inputs.show', '1'));
+
+        $response->assertStatus(200);
+        $response->assertSee(__('Vissza az adatokhoz'));
+        $response->assertSee(__('Megállapított többletpontszám:'));
+        $response->assertDontSee(__('hiba, nem érhetőek el az érettségi eredmények'));
+        $response->assertDontSee(__('Nem található ez a tesztadat.'));
+    }
 
     //Nyelvtudás
 

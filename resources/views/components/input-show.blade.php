@@ -32,7 +32,7 @@
             <x-input-show-is-types-req-optional :erettsegiEredmenyek="$$actArray['erettsegi-eredmenyek']" />
         @endif
         @if (session('error') === false)
-            {{ 'Megállapított alappontszám: (' . $_SESSION['kotelezo_eredmeny'] . '+' . $_SESSION['kotelezoen_valaszthato_eredmeny'] . ')*2' }}
+            <x-input-show-basic-score />
         @endif
     @endif
 

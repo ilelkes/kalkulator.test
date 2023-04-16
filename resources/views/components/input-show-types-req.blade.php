@@ -2,6 +2,7 @@
 @php
     $message = 'hiba, nem elérhetőek a választott szak pontszámításához a követelmények';
     $szak = $valasztottSzak['egyetem'] . '-' . $valasztottSzak['kar'] . '-' . $valasztottSzak['szak'];
+    $_SESSION['valasztott_szak'] = $valasztottSzak['egyetem'] . ' ' . $valasztottSzak['kar'] . ' ' . $valasztottSzak['szak'];
     
     //A kapott php adatok mellé, szak követelmény temp
     require public_path('homework_input_szak.php');
